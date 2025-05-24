@@ -1,116 +1,164 @@
 # 🏨 Hotel Management System (Advanced Database Project)
 
 Welcome to the **Hotel Management System** project!  
-This project is part of an advanced database systems course and demonstrates practical implementation of DDL, DML, stored procedures, triggers, advanced queries, and auditing using PostgreSQL.
+This project is part of an **Advanced Database Programming and Administration** course. It demonstrates advanced SQL programming and design techniques using **PostgreSQL**, including:
 
-## 👨‍💻 Developed By
-**Igizeneza Serge Benit**  
-Student ID: **27311**
-Group     : **Monday**
+- DDL & DML operations
+- Triggers
+- Procedures and functions (with cursors and exception handling)
+- Window functions
+- Auditing and package-based control
+- Complete ER/UML modeling and normalization
+
+---
+
+## 👨‍💻 Developer Info
+
+**Name:** Igizeneza Serge Benit  
+**Student ID:** 27311  
+**Group     :** monday
+**Email:** [hacksergeb@gmail.com](mailto:hacksergeb@gmail.com)
 
 ---
 
 ## 📌 Project Overview
 
-This project simulates a real-world hotel management system with features that support:
-
-- Reservation management
-- Guest tracking
-- Auditing with stored procedures and packages
-- Use of cursors, exception handling, and window functions
-- Enforcement of business rules using triggers
+This system is built to manage hotel-related data and operations such as bookings, payments, staff, services, and more. It is structured to enforce data integrity, normalization, and advanced audit mechanisms.
 
 ---
 
-## 📁 Project Structure
+## 🧩 ER Model Summary
 
-### 📊 UML Diagram
-Visual representation of system architecture.
-![UML Diagram](https://github.com/Sergeb250/27311-Hotel-Management/blob/aecfd571fd24ab2a9d478c5d8afd0929474f74f5/screenshots/uml.png)
+### 📄 Entities & Attributes
 
-### 🗂️ ER Diagram
+- **Hotels** (`hotel_id` PK, `name`, `address`, `star_rating`, etc.)
+- **Staff** (`staff_id` PK, `hotel_id` FK, `name`, `position`, etc.)
+- **Room_Types** (`room_type_id` PK, `hotel_id` FK, `type_name`, `base_price`, `capacity`)
+- **Rooms** (`room_id` PK, `hotel_id` FK, `room_type_id` FK, `room_number`, `status`)
+- **Guests** (`guest_id` PK, `name`, `email`, `phone`, etc.)
+- **Reservations** (`reservation_id` PK, `guest_id` FK, `hotel_id` FK, `check_in_date`, `check_out_date`, `status`)
+- **Reservation_Details** (`reservation_detail_id` PK, `reservation_id` FK, `room_id` FK, `adults`, `children`)
+- **Services** (`service_id` PK, `hotel_id` FK, `name`, `price`, `category`)
+- **Service_Bookings** (`service_booking_id` PK, `reservation_id` FK, `service_id` FK, `date`, `status`)
+- **Payments** (`payment_id` PK, `reservation_id` FK, `amount`, `method`, `status`)
+
+### 🔗 Key Relationships
+
+- **One-to-Many**:
+  - Hotel → Staff, Room_Types, Rooms, Services
+  - Guest → Reservations
+  - Reservation → Reservation_Details, Service_Bookings, Payments
+
+- **Many-to-Many (via junction tables)**:
+  - Reservation ↔ Rooms (via `Reservation_Details`)
+  - Reservation ↔ Services (via `Service_Bookings`)
+
+### 🛡️ Constraints
+
+- **PK/FK**: All relationships enforced via foreign keys.
+- **NOT NULL**: Required on critical fields (e.g., `hotel_id`, `guest_id`).
+- **UNIQUE**: Email, phone (Guests, Hotels); `room_number` per hotel.
+- **CHECK**:
+  - `star_rating` (must be between 1–5)
+  - Valid status values (e.g., `"Available"`, `"Occupied"` for Rooms)
+- **DEFAULT**: `CURRENT_DATE` for booking and registration dates.
+
+### ✅ Normalization (3NF)
+
+- No redundant data (e.g., pricing is only in `Room_Types`)
+- All non-key attributes depend solely on the primary key
+- Ensures scalability and integrity of the database
+
+---
+
+## 📁 Project Artifacts & Features
+
+### 🧠 UML Diagram
+
+Visualizes the system from an object-oriented perspective.  
+📷 **UML Image:** *(Coming soon)*
+![ER Diagram](https://github.com/Sergeb250/27311-Hotel-Management/blob/b2a24d50f7f2c12d9402cb8e9c412dee820fab18/screenshots/uml.png)
+
+---
+
+### 📌 Entity Relationship (ER) Diagram
+
+📷 **ER Diagram:**  
 ![ER Diagram](https://github.com/Sergeb250/27311-Hotel-Management/blob/f88116eaa72460798829728bd7fd2c51c7880252/screenshots/ERdiagram.png)
 
-### 🏗️ Tables
-Schema structure:
-![Tables](https://github.com/Sergeb250/27311-Hotel-Management/blob/f88116eaa72460798829728bd7fd2c51c7880252/screenshots/Screenshot%202025-05-24%20213614.png)
+---
+
+### 🔧 DDL & DML Operations
+
+- Table creation, alteration, and constraints  
+📷 **Images:**  
+![Alter 1](https://github.com/Sergeb250/27311-Hotel-Management/blob/f88116eaa72460798829728bd7fd2c51c7880252/screenshots/alter%20(2).png)  
+![Alter 2](https://github.com/Sergeb250/27311-Hotel-Management/blob/f88116eaa72460798829728bd7fd2c51c7880252/screenshots/alter.png)
 
 ---
 
-## 🛠️ DDL and DML Operations
+### 📊 Windows Functions
 
-### 🔧 ALTER Statements
-- Modify schema and structure.
-![Alter 1](https://github.com/Sergeb250/27311-Hotel-Management/blob/f88116eaa72460798829728bd7fd2c51c7880252/screenshots/alter.png)
-![Alter 2](https://github.com/Sergeb250/27311-Hotel-Management/blob/f88116eaa72460798829728bd7fd2c51c7880252/screenshots/alter%20(2).png)
-
-### 📝 INSERT Operation
-- Sample data insertion.
-![Insert](https://github.com/Sergeb250/27311-Hotel-Management/blob/f88116eaa72460798829728bd7fd2c51c7880252/screenshots/insert.png)
-
-### 🔍 SELECT Queries
-- Data retrieval using joins and filters.
-![Select](https://github.com/Sergeb250/27311-Hotel-Management/blob/f88116eaa72460798829728bd7fd2c51c7880252/screenshots/select.png)
-![Guests](https://github.com/Sergeb250/27311-Hotel-Management/blob/f88116eaa72460798829728bd7fd2c51c7880252/screenshots/guests.png)
-
-### ❌ DELETE Operation
-- Deleting records.
-![Delete](https://github.com/Sergeb250/27311-Hotel-Management/blob/f88116eaa72460798829728bd7fd2c51c7880252/screenshots/delete.png)
+📷 **Window Function Image:**  
+![Window Function](https://github.com/Sergeb250/27311-Hotel-Management/blob/f88116eaa72460798829728bd7fd2c51c7880252/screenshots/WINDOW_fuction.png)
 
 ---
 
-## 🧠 Advanced Features
+### 🔁 Procedures, Cursors & Exception Handling
 
-### 📐 Window Functions
-- Ranking and analytics over partitions.
-![Window Functions](https://github.com/Sergeb250/27311-Hotel-Management/blob/f88116eaa72460798829728bd7fd2c51c7880252/screenshots/WINDOW_fuction.png)
-
-### 🧾 Procedures, Cursors & Exception Handling
-- Use of stored procedures for automation.
-- Cursors for row-by-row operations.
-- Exception handling for robust programming.
-
-![Cursor](https://github.com/Sergeb250/27311-Hotel-Management/blob/f88116eaa72460798829728bd7fd2c51c7880252/screenshots/cursor.png)
-![Cursor 2](https://github.com/Sergeb250/27311-Hotel-Management/blob/f88116eaa72460798829728bd7fd2c51c7880252/screenshots/cursor%20(2).png)
-![Fetch Cursor](https://github.com/Sergeb250/27311-Hotel-Management/blob/f88116eaa72460798829728bd7fd2c51c7880252/screenshots/fetch%20cursor.png)
+📷 **Procedure Images:**  
+![Cursor 1](https://github.com/Sergeb250/27311-Hotel-Management/blob/f88116eaa72460798829728bd7fd2c51c7880252/screenshots/cursor.png)  
+![Cursor 2](https://github.com/Sergeb250/27311-Hotel-Management/blob/f88116eaa72460798829728bd7fd2c51c7880252/screenshots/cursor%20(2).png)  
+![Fetch Cursor](https://github.com/Sergeb250/27311-Hotel-Management/blob/f88116eaa72460798829728bd7fd2c51c7880252/screenshots/fetch%20cursor.png)  
 ![Cursor Result](https://github.com/Sergeb250/27311-Hotel-Management/blob/f88116eaa72460798829728bd7fd2c51c7880252/screenshots/cursorresult.png)
 
 ---
 
-## 🔒 Auditing & Security
+### 🛡️ Advanced Database Auditing & Packages
 
-### 📦 PL/pgSQL Package & Auditing Functions
-- Logging operations
-- Restricting unauthorized DML
-
-![Package 1](https://github.com/Sergeb250/27311-Hotel-Management/blob/f88116eaa72460798829728bd7fd2c51c7880252/screenshots/package.png)
-![Package 2](https://github.com/Sergeb250/27311-Hotel-Management/blob/f88116eaa72460798829728bd7fd2c51c7880252/screenshots/package2.png)
+📷 **Auditing Package Images:**  
+![Package 1](https://github.com/Sergeb250/27311-Hotel-Management/blob/f88116eaa72460798829728bd7fd2c51c7880252/screenshots/package.png)  
+![Package 2](https://github.com/Sergeb250/27311-Hotel-Management/blob/f88116eaa72460798829728bd7fd2c51c7880252/screenshots/package2.png)  
 ![Package Result](https://github.com/Sergeb250/27311-Hotel-Management/blob/f88116eaa72460798829728bd7fd2c51c7880252/screenshots/package%20result.png)
 
 ---
 
-## 📸 Screenshots
+### ➕ Insert Operation
 
-Screenshots are stored in the `/screenshots` directory for reference.
-
----
-
-## 🏁 Conclusion
-
-This project demonstrates the use of advanced database programming concepts within a hotel management system.  
-It reflects real-world use of DML, DDL, stored procedures, triggers, auditing, and analytics using PostgreSQL.
+📷 **Insert Example:**  
+![Insert](https://github.com/Sergeb250/27311-Hotel-Management/blob/f88116eaa72460798829728bd7fd2c51c7880252/screenshots/insert.png)
 
 ---
 
-## 📬 Contact
+### 🔍 Select Operation
 
-For any questions or collaborations, feel free to reach out to:
-
-**Igizeneza Serge Benit**  
-Email: [hacksergeb@gmail.com](mailto:hacksergeb@gmail.com)
+📷 **Select Results:**  
+![Select](https://github.com/Sergeb250/27311-Hotel-Management/blob/f88116eaa72460798829728bd7fd2c51c7880252/screenshots/select.png)  
+![Guests](https://github.com/Sergeb250/27311-Hotel-Management/blob/f88116eaa72460798829728bd7fd2c51c7880252/screenshots/guests.png)
 
 ---
 
-## 📝 License
+### ❌ Delete Operation
 
-This project is part of academic coursework and provided for educational purposes only.
+📷 **Delete Example:**  
+![Delete](https://github.com/Sergeb250/27311-Hotel-Management/blob/f88116eaa72460798829728bd7fd2c51c7880252/screenshots/delete.png)
+
+---
+
+### 📊 Tables Snapshot
+
+📷 **Tables View:**  
+![Tables](https://github.com/Sergeb250/27311-Hotel-Management/blob/f88116eaa72460798829728bd7fd2c51c7880252/screenshots/Screenshot%202025-05-24%20213614.png)
+
+---
+
+## ✅ Conclusion
+
+This project showcases a full database system implementation with proper normalization, constraints, and enterprise features like procedures and audit control. It is a solid base for real-world hotel management systems or academic demonstration.
+
+---
+
+## 📎 License
+
+This project is licensed for academic purposes only. For any commercial use, contact the developer.
+
