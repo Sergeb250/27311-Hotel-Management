@@ -1,209 +1,115 @@
-Hotel Management System – PL/SQL 
+# 🏨 Hotel Management System (Advanced Database Project)
 
-Phase 1: Problem Definition & Requirements
+Welcome to the **Hotel Management System** project!  
+This project is part of an advanced database systems course and demonstrates practical implementation of DDL, DML, stored procedures, triggers, advanced queries, and auditing using PostgreSQL.
 
-🔍 Problem Definition
+## 👨‍💻 Developed By
+**Igizeneza Serge Benit**  
+Student ID: **27311**
 
-Hotels often struggle with fragmented operations across bookings, guest services, room allocation, and billing. This lack of integration leads to manual data entry, increased chances of overbooking or billing errors, and inefficient service delivery.
+---
 
-💡 Solution Overview
+## 📌 Project Overview
 
-This system offers an integrated hotel management solution built using Oracle PL/SQL to manage:
+This project simulates a real-world hotel management system with features that support:
 
-Real-time room availability & status tracking
+- Reservation management
+- Guest tracking
+- Auditing with stored procedures and packages
+- Use of cursors, exception handling, and window functions
+- Enforcement of business rules using triggers
 
-Guest registration & reservation
+---
 
-Staff management
+## 📁 Project Structure
 
-Additional services (e.g., spa, room service)
+### 📊 UML Diagram
+Visual representation of system architecture.
+![UML Diagram](https://github.com/Sergeb250/27311-Hotel-Management/blob/main/screenshots/ERdiagram.png)
 
-Centralized billing and payment tracking
+### 🗂️ ER Diagram
+![ER Diagram](https://github.com/Sergeb250/27311-Hotel-Management/blob/f88116eaa72460798829728bd7fd2c51c7880252/screenshots/ERdiagram.png)
 
-Role-based access for hotel staff
+### 🏗️ Tables
+Schema structure:
+![Tables](https://github.com/Sergeb250/27311-Hotel-Management/blob/f88116eaa72460798829728bd7fd2c51c7880252/screenshots/Screenshot%202025-05-24%20213614.png)
 
-🌟 Target Users
+---
 
-Hotel Managers (Full access)
+## 🛠️ DDL and DML Operations
 
-Receptionists (Booking, guest check-in/check-out)
+### 🔧 ALTER Statements
+- Modify schema and structure.
+![Alter 1](https://github.com/Sergeb250/27311-Hotel-Management/blob/f88116eaa72460798829728bd7fd2c51c7880252/screenshots/alter.png)
+![Alter 2](https://github.com/Sergeb250/27311-Hotel-Management/blob/f88116eaa72460798829728bd7fd2c51c7880252/screenshots/alter%20(2).png)
 
-Accounting Staff (Billing & Payments)
+### 📝 INSERT Operation
+- Sample data insertion.
+![Insert](https://github.com/Sergeb250/27311-Hotel-Management/blob/f88116eaa72460798829728bd7fd2c51c7880252/screenshots/insert.png)
 
-Housekeeping Supervisors (Room status)
+### 🔍 SELECT Queries
+- Data retrieval using joins and filters.
+![Select](https://github.com/Sergeb250/27311-Hotel-Management/blob/f88116eaa72460798829728bd7fd2c51c7880252/screenshots/select.png)
+![Guests](https://github.com/Sergeb250/27311-Hotel-Management/blob/f88116eaa72460798829728bd7fd2c51c7880252/screenshots/guests.png)
 
-🗂️ Key Entities
+### ❌ DELETE Operation
+- Deleting records.
+![Delete](https://github.com/Sergeb250/27311-Hotel-Management/blob/f88116eaa72460798829728bd7fd2c51c7880252/screenshots/delete.png)
 
-Hotels: Hotel profile information
+---
 
-Guests: Personal and contact info
+## 🧠 Advanced Features
 
-Staff: Roles, departments, and hotel linkage
+### 📐 Window Functions
+- Ranking and analytics over partitions.
+![Window Functions](https://github.com/Sergeb250/27311-Hotel-Management/blob/f88116eaa72460798829728bd7fd2c51c7880252/screenshots/WINDOW_fuction.png)
 
-Room Types & Rooms: Capacity, pricing, status
+### 🧾 Procedures, Cursors & Exception Handling
+- Use of stored procedures for automation.
+- Cursors for row-by-row operations.
+- Exception handling for robust programming.
 
-Reservations & Reservation Details
+![Cursor](https://github.com/Sergeb250/27311-Hotel-Management/blob/f88116eaa72460798829728bd7fd2c51c7880252/screenshots/cursor.png)
+![Cursor 2](https://github.com/Sergeb250/27311-Hotel-Management/blob/f88116eaa72460798829728bd7fd2c51c7880252/screenshots/cursor%20(2).png)
+![Fetch Cursor](https://github.com/Sergeb250/27311-Hotel-Management/blob/f88116eaa72460798829728bd7fd2c51c7880252/screenshots/fetch%20cursor.png)
+![Cursor Result](https://github.com/Sergeb250/27311-Hotel-Management/blob/f88116eaa72460798829728bd7fd2c51c7880252/screenshots/cursorresult.png)
 
-Services & Service Bookings
+---
 
-Payments
+## 🔒 Auditing & Security
 
-🏰 Anticipated Benefits
+### 📦 PL/pgSQL Package & Auditing Functions
+- Logging operations
+- Restricting unauthorized DML
 
-Centralized data for hotel operations
+![Package 1](https://github.com/Sergeb250/27311-Hotel-Management/blob/f88116eaa72460798829728bd7fd2c51c7880252/screenshots/package.png)
+![Package 2](https://github.com/Sergeb250/27311-Hotel-Management/blob/f88116eaa72460798829728bd7fd2c51c7880252/screenshots/package2.png)
+![Package Result](https://github.com/Sergeb250/27311-Hotel-Management/blob/f88116eaa72460798829728bd7fd2c51c7880252/screenshots/package%20result.png)
 
-Faster guest check-in and service processing
+---
 
-Improved billing accuracy
+## 📸 Screenshots
 
-Better room allocation and housekeeping coordination
+Screenshots are stored in the `/screenshots` directory for reference.
 
-Phase 2: Business Process Modeling (BPMN)
+---
 
-🌟 Scope & Objectives
+## 🏁 Conclusion
 
-The BPMN model represents the full guest lifecycle, from initial reservation to check-out and post-stay payment. The primary goals are:
+This project demonstrates the use of advanced database programming concepts within a hotel management system.  
+It reflects real-world use of DML, DDL, stored procedures, triggers, auditing, and analytics using PostgreSQL.
 
-Streamlined reservations and room assignments
+---
 
-Real-time coordination across departments
+## 📬 Contact
 
-Automated billing and service integration
+For any questions or collaborations, feel free to reach out to:
 
-🧑‍🤝 Key Actors (Swimlanes)
+**Igizeneza Serge Benit**  
+Email: [hacksergeb@gmail.com](mailto:hacksergeb@gmail.com)
 
-Guest: Makes reservation, checks in/out
+---
 
-Receptionist: Creates and modifies reservations
+## 📝 License
 
-System: Assigns rooms, logs actions, calculates totals
-
-Housekeeping: Receives updates on room status
-
-Accounts: Confirms payments, processes invoices
-
-⟳ Logical Flow Summary
-
-Guest makes a reservation
-
-Receptionist assigns room(s) based on availability
-
-System logs reservation and sends updates to housekeeping
-
-Services booked are attached to the reservation
-
-Guest checks out and payment is processed
-
-✅ Process Highlights
-
-Service booking generates charges automatically
-
-Real-time room status updates
-
-Trigger-driven notifications for late check-outs or unpaid balances
-
-Phase 3: Logical Model Design
-
-📃 Entity-Relationship (ER) Model
-
-Normalized to 3NF, the following main tables are defined:
-
-HOTELS: hotel_id, name, contact info, star_rating
-
-STAFF: staff_id, hotel_id, name, role, department
-
-ROOM_TYPES: room_type_id, type_name, base_price
-
-ROOMS: room_id, room_number, floor, room_type_id
-
-GUESTS: guest_id, full details, id_number
-
-RESERVATIONS: reservation_id, guest_id, hotel_id, status
-
-RESERVATION_DETAILS: room_id, adults, children
-
-SERVICES: service_id, service_name, price, hotel_id
-
-SERVICE_BOOKINGS: service_booking_id, reservation_id, quantity
-
-PAYMENTS: payment_id, reservation_id, amount, method, status
-
-🔗 Relationships & Constraints
-
-ROOMS to ROOM_TYPES: Many-to-One
-
-ROOMS to HOTELS: Many-to-One
-
-STAFF to HOTELS: Many-to-One
-
-RESERVATIONS to GUESTS and HOTELS: Many-to-One
-
-RESERVATION_DETAILS to RESERVATIONS & ROOMS: Many-to-One
-
-SERVICE_BOOKINGS to SERVICES & RESERVATIONS: Many-to-One
-
-PAYMENTS to RESERVATIONS: Many-to-One
-
-⚖️ Constraints Summary
-
-Primary Keys on all IDs
-
-Foreign Keys for inter-table dependencies
-
-CHECK Constraints on status and values (e.g., star_rating, price > 0)
-
-UNIQUE and NOT NULL constraints on critical columns (e.g., emails, room numbers)
-
-⚛️ Normalization to 3NF
-
-No repeating groups or multivalued fields (1NF)
-
-Full functional dependency on PKs (2NF)
-
-No transitive dependencies (3NF)
-
-Phase 4: Database Creation and Naming
-
-✅ Status
-
-Due to Oracle XE limitations on the current local setup, full container database creation (CDB + PDB) was not possible. Therefore, all scripts are executed under a default XE schema for demonstration.
-
-OEM Screenshots: Not available due to instance limitations. SQL scripts and schema details are provided for review.
-
-Phase 5: DDL Scripting and Execution
-
-⚒️ Execution Environment
-
-DDL scripts were created and successfully executed using Oracle Live SQL.
-
-Tables include:
-
-Hotels, Staff, Room_Types, Rooms, Guests
-
-Reservations, Reservation_Details, Services
-
-Service_Bookings, Payments
-
-All foreign keys, data types, and constraints are in place as per the logical model.
-
-Phase 6: Database Interaction and Transactions
-
-📊 Problem for Analysis
-
-Goal: Track hotel revenue and occupancy per room type.
-
-Identify the top 3 and bottom 3 room types based on revenue
-
-Monitor room utilization per week/month
-
-Analyze service usage by guests
-
-🔧 Features Demonstrated
-
-PL/SQL procedures to check availability, process bookings
-
-Triggers to prevent double bookings
-
-Exception handling for overlapping dates or invalid guests
-
-Packages to bundle related operations (e.g., reservation + service booking)
+This project is part of academic coursework and provided for educational purposes only.
