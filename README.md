@@ -6,6 +6,7 @@ This project is part of an advanced database systems course and demonstrates pra
 ## 👨‍💻 Developed By
 **Igizeneza Serge Benit**  
 Student ID: **27311**
+Group     : **Monday**
 
 ---
 
@@ -25,7 +26,7 @@ This project simulates a real-world hotel management system with features that s
 
 ### 📊 UML Diagram
 Visual representation of system architecture.
-![UML Diagram](https://github.com/Sergeb250/27311-Hotel-Management/blob/main/screenshots/ERdiagram.png)
+![UML Diagram](https://github.com/Sergeb250/27311-Hotel-Management/blob/aecfd571fd24ab2a9d478c5d8afd0929474f74f5/screenshots/uml.png)
 
 ### 🗂️ ER Diagram
 ![ER Diagram](https://github.com/Sergeb250/27311-Hotel-Management/blob/f88116eaa72460798829728bd7fd2c51c7880252/screenshots/ERdiagram.png)
